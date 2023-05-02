@@ -11,9 +11,9 @@ const FoodCategory = ({ category }) => {
             alt="foods"
           />
         </figure>
-        <div className="card-body mt-20 text-center">
-          <h2 className="card-title text-3xl font-bold mx-auto">{name}</h2>
-          <p className="text-xl font-semibold">{details}</p>
+        <div className="card-body mt-20">
+          <h2 className="card-title text-3xl font-bold mx-auto text-white">{name}</h2>
+          <p className="text-xl font-semibold text-white text-center">{details}</p>
         </div>
       </div>
     </>
