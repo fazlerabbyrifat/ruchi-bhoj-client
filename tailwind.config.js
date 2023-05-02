@@ -26,5 +26,12 @@ export default {
       },
     ],
   },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Playfair Display", "sans-serif"],
+      },
+    },
+  },
   plugins: [require("daisyui")],
 };
