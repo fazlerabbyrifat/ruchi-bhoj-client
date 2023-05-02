@@ -9,7 +9,7 @@ const Navbar = () => {
     }
 
   return (
-    <div className="navbar bg-gray-200 p-6 mb-5 font-sans">
+    <div className="navbar bg-gray-200 md:p-6 font-sans">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -61,7 +61,7 @@ const Navbar = () => {
         {
             userName && <span className="text-info">User name</span>
         }
-        <button className="mx-4 px-3 py-2 bg-blue-400 text-white font-medium rounded">Logout</button>
+        <button className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">Logout</button>
       </div>
     </div>
   );
