@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import { FaRegBookmark } from "react-icons/fa";
+import {  FaHeart, FaRegHeart } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toast";
 
 const Recipes = ({ recipe }) => {
-  console.log(recipe);
   const { recipes_id, ingredients, method, name, rating } = recipe;
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavorite = () => {
+    setIsFavorite(true);
+    toast.success(`${name} added to favorites!`);
+  };
 
   return (
     <>
@@ -22,8 +28,11 @@ const Recipes = ({ recipe }) => {
             <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
             <span>{rating}</span>
             </div>
-            <button>
-                <FaRegBookmark></FaRegBookmark>
+            <button onClick={handleFavorite} disabled={isFavorite}>
+                {
+                    isFavorite ? <FaHeart className="text-red-500" /> : <FaRegHeart />
+                }
+                <ToastContainer delay={2000}></ToastContainer>
             </button>
           </div>
         </div>
