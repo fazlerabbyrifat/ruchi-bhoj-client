@@ -1,4 +1,7 @@
 import React from "react";
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+import { FaRegBookmark } from "react-icons/fa";
 
 const Recipes = ({ recipe }) => {
   console.log(recipe);
@@ -14,8 +17,14 @@ const Recipes = ({ recipe }) => {
             <li className="text-lg font-medium list-disc list-inside">{ingredient}</li>
           </ul>)}
           <p>Cooking Method: {method}</p>
-          <div className="card-actions">
-            <button className="btn">Buy Now</button>
+          <div className="card-actions justify-between items-center">
+            <div className="flex items-center gap-3">
+            <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
+            <span>{rating}</span>
+            </div>
+            <button>
+                <FaRegBookmark></FaRegBookmark>
+            </button>
           </div>
         </div>
       </div>
