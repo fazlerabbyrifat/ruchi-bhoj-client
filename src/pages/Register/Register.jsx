@@ -1,12 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+  const { createUser, user } = useContext(AuthContext);
+  const [error, setError] = useState('');
+
+  console.log(user)
+
+    const handleRegister = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const image = form.image.value
+        const email = form.email.value;
+        const password = form.password.value;
+
+        setError('');
+        if(name === '' || image === '' || email === '' || password === ''){
+            setError('All fields are required');
+            return;
+        }
+        else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/.test(password)) {
+             setError('Password should contain at least one uppercase letter, one lowercase letter, one special character, and one number. Password must be at least 6 characters long.');
+             return;
+        }
+
+        createUser(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            form.reset();
+        })
+        .catch(error => {
+            setError(error.message);
+        })
+    }
+
   return (
     <div className="bg-gray-100 flex flex-col h-screen justify-center items-center">
       <div className="bg-white rounded-lg p-8 shadow-md">
         <h2 className="text-3xl font-bold mb-4">Create an account</h2>
-        <form className="space-y-4">
+        <p className="text-error font-semibold">{error}</p>
+        <form onSubmit={handleRegister} className="space-y-4">
           <div>
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -80,7 +116,7 @@ const Register = () => {
             </button>
           </div>
           <div className="text-center">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to="/login" className="text-blue-500">
               Log in here
             </Link>

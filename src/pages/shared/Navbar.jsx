@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const [userName, setUserName] = useState(false);
 
   const handleUserName = () => {
@@ -61,16 +63,26 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <img
-          className="w-10 h-10 rounded-full"
-          onMouseEnter={() => handleUserName(true)}
-          src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1683014743~exp=1683015343~hmac=06bf290b48fda4f64dea6f5e05b569dc14e4ffb1f0f1d286b2a31fa8d5c0d3fa"
-          alt=""
-        />
+        {user && (
+          <img
+            className="w-10 h-10 rounded-full"
+            onMouseEnter={() => handleUserName(true)}
+            src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1683014743~exp=1683015343~hmac=06bf290b48fda4f64dea6f5e05b569dc14e4ffb1f0f1d286b2a31fa8d5c0d3fa"
+            alt=""
+          />
+        )}
         {userName && <span className="text-info">User name</span>}
-        <button className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
-          Logout
-        </button>
+        {user ? (
+          <button className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
+            Logout
+          </button>
+        ) : (
+          <Link to='/login'>
+            <button className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
