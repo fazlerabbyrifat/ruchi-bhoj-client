@@ -1,16 +1,16 @@
 import React from "react";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefCard = ({ chef }) => {
-  const {id, picture, total_recipes, experience, name, likes} = chef;
+  const { id, picture, total_recipes, experience, name, likes } = chef;
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
         <figure>
-          <img
-            src={picture}
-            alt="chef"
-          />
+          <LazyLoad height={450}>
+            <img src={picture} alt="chef" />
+          </LazyLoad>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
@@ -18,7 +18,9 @@ const ChefCard = ({ chef }) => {
           <p>Experience: {experience} years</p>
           <p>Total likes by customers: {likes}</p>
           <div className="card-actions justify-end">
-            <Link to={`/chefsinfo/${id}`}><button className="btn btn-primary">View Recipes</button></Link>
+            <Link to={`/chefsinfo/${id}`}>
+              <button className="btn btn-primary">View Recipes</button>
+            </Link>
           </div>
         </div>
       </div>
