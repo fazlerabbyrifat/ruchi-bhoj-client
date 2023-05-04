@@ -17,12 +17,12 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/chefsinfo")
+                loader: () => fetch("https://the-ruchi-bhoj-server-fazlerabbyrifat.vercel.app/chefsinfo")
             },
             {
                 path: '/chefsinfo/:id',
                 element: <PrivateRoutes><ChefDetails></ChefDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefsinfo/${params.id}`)
+                loader: ({params}) => fetch(`https://the-ruchi-bhoj-server-fazlerabbyrifat.vercel.app/${params.id}`)
             },
             {
                 path: '/login',

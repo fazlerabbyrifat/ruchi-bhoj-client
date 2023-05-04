@@ -6,14 +6,14 @@ const Blog = () => {
   const handleDownload = () => {
     const doc = new jsPDF();
     const content = pdfExportComponent;
-  
+
     doc.html(content, {
       callback: function () {
         doc.save("blog.pdf");
       },
     });
   };
-  
+
   return (
     <div className="my-10 bg-gray-200" ref={(el) => (pdfExportComponent = el)}>
       <div className="p-10">

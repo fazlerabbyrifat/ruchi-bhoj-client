@@ -18,7 +18,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://the-ruchi-bhoj-server-fazlerabbyrifat.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
