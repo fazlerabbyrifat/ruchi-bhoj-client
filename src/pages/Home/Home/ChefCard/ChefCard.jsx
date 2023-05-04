@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const ChefCard = ({ chef }) => {
   const { id, picture, total_recipes, experience, name, likes } = chef;
+
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">

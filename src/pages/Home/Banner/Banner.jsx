@@ -12,7 +12,7 @@ const Banner = () => {
           <h1 className="banner-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-amber-500">
           Satisfy your <br /> cravings
           </h1>
-          <p className="banner-subtitle text-lg md:text-xl lg:text-2xl font-bold mb-8 text-green-300">
+          <p className="banner-subtitle text-lg md:text-xl lg:text-2xl font-bold mb-8 text-red-600">
             with our authentic <br /> Bangladeshi dishes <br /> made with love and care
           </p>
         </div>

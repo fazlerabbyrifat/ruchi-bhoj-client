@@ -43,30 +43,30 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-2xl font-bold"
           >
             <li>
-              <NavLink className="m-2 p-2 active:bg-pink-400">Home</NavLink>
+              <NavLink to='/' className="m-2 p-2 active:text-blue-400 active:bg-red-400">Home</NavLink>
             </li>
             <li>
-              <NavLink className="m-2 p-2 active:bg-pink-400">About</NavLink>
+              <NavLink to='/about' className="m-2 p-2 active:text-blue-400  active:bg-red-400">About</NavLink>
             </li>
             <li>
-              <NavLink className="m-2 p-2 active:bg-pink-400">Blog</NavLink>
+              <NavLink to='/blog' className="m-2 p-2 active:text-blue-400  active:bg-red-400">Blog</NavLink>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-4xl font-extrabold text-violet-400">
+        <Link to='/' className="btn btn-ghost normal-case text-4xl font-extrabold text-violet-400">
           RuchiBhoj
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex font-sans">
         <ul className=" menu-horizontal px-1 text-2xl font-bold">
           <li>
-            <NavLink className="m-2 p-2 active:bg-pink-400">Home</NavLink>
+            <NavLink to='/' className="m-2 p-2 active:text-blue-400 active:bg-red-400">Home</NavLink>
           </li>
           <li>
-            <NavLink className="m-2 p-2 active:bg-pink-400">About</NavLink>
+            <NavLink to='/about' className="m-2 p-2 active:text-blue-400  active:bg-red-400">About</NavLink>
           </li>
           <li>
-            <NavLink className="m-2 p-2 active:bg-pink-400">Blog</NavLink>
+            <NavLink to='/blog' className="m-2 p-2 active:text-blue-400  active:bg-red-400">Blog</NavLink>
           </li>
         </ul>
       </div>

@@ -11,7 +11,7 @@ const PrivateRoutes = ({children}) => {
         return <FadeLoader></FadeLoader>
     }
 
-    if(user) {
+    else if(user) {
         return children;
     }
 
