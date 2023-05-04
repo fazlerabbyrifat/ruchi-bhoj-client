@@ -43,7 +43,7 @@ const Home = () => {
           Our Food Categories
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <FoodCategory key={category.id} category={category}></FoodCategory>
           ))}
         </div>
@@ -53,7 +53,7 @@ const Home = () => {
           Our Best Chefs
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
-          {chefsDetails.map((chef) => (
+          {chefsDetails?.map((chef) => (
             <ChefCard key={chef.id} chef={chef}></ChefCard>
           ))}
         </div>

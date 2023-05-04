@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../../providers/AuthProvider";
+
 
 const ChefCard = ({ chef }) => {
   const { id, picture, total_recipes, experience, name, likes } = chef;

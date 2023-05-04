@@ -33,7 +33,7 @@ const ChefDetails = () => {
           Chefs Best Recipes
         </h1>
         <div className="grid lg:grid-cols-3 mt-5 p-5 gap-5">
-          {recipes.map((recipe) => (
+          {recipes?.map((recipe) => (
             <Recipes key={recipe.recipes_id} recipe={recipe}></Recipes>
           ))}
         </div>

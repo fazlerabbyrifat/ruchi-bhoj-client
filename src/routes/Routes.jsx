@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/chefsinfo/:id',
                 element: <PrivateRoutes><ChefDetails></ChefDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`https://the-ruchi-bhoj-server-fazlerabbyrifat.vercel.app/${params.id}`)
+                loader: ({params}) => fetch(`https://the-ruchi-bhoj-server-fazlerabbyrifat.vercel.app/chefsinfo/${params.id}`)
             },
             {
                 path: '/login',
