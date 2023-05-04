@@ -19,7 +19,9 @@ const Recipes = ({ recipe }) => {
         <div className="card-body">
           <h2 className="card-title text-3xl font-bold">Recipe's name: {name}</h2>
           <p className="text-xl font-semibold">Ingredients:</p>
-          {ingredients?.map(ingredient => <ul>
+          {ingredients?.map((ingredient, index) => <ul
+          key={index}
+          >
             <li className="text-lg font-medium list-disc list-inside">{ingredient}</li>
           </ul>)}
           <p>Cooking Method: {method}</p>

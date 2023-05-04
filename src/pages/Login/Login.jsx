@@ -1,24 +1,32 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { login, googleLogin, auth } = useContext(AuthContext);
+  const { login, googleLogin, githubLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
-  const googleProvider = new GoogleAuthProvider();
-
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, googleProvider)
+    googleLogin()
       .then((result) => {
         const loggedUser = result.user;
         navigate(from, { replace: true });
       })
       .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then((result) => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+    .catch((error) => {
         console.log(error.message);
       });
   };
@@ -108,6 +116,7 @@ const Login = () => {
               </button>
               <button
                 type="button"
+                onClick={handleGithubLogin}
                 className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
               >
                 <span className="flex items-center">

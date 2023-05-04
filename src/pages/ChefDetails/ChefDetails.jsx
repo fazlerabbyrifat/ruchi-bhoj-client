@@ -5,7 +5,6 @@ import LazyLoad from "react-lazy-load";
 
 const ChefDetails = () => {
   const chef = useLoaderData();
-  console.log(chef);
   const { id, name, picture, total_recipes, experience, likes, bio, recipes } =
     chef;
 

@@ -5,7 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [userName, setUserName] = useState(false);
-console.log(user)
+
   const handleUserName = () => {
     setUserName(!userName);
   };
