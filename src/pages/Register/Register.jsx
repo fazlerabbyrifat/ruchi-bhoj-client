@@ -1,41 +1,57 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createUser, user } = useContext(AuthContext);
-  const [error, setError] = useState('');
+  const { createUser, user, auth } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
-  console.log(user)
+  console.log(user);
 
-    const handleRegister = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const image = form.image.value
-        const email = form.email.value;
-        const password = form.password.value;
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const image = form.image.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password, image);
 
-        setError('');
-        if(name === '' || image === '' || email === '' || password === ''){
-            setError('All fields are required');
-            return;
-        }
-        else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/.test(password)) {
-             setError('Password should contain at least one uppercase letter, one lowercase letter, one special character, and one number. Password must be at least 6 characters long.');
-             return;
-        }
-
-        createUser(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-        })
-        .catch(error => {
-            setError(error.message);
-        })
+    setError("");
+    if (name === "" || image === "" || email === "" || password === "") {
+      setError("All fields are required");
+      return;
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/.test(
+        password
+      )
+    ) {
+      setError(
+        "Password should contain at least one uppercase letter, <br /> one lowercase letter, one special character, and one number. Password must be at least 6 characters long."
+      );
+      return;
     }
+
+    createUser(email, password)
+      .then((result) => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: image
+        })
+        .then(() =>{
+          console.log("Profile updated");
+        })
+        .catch((error) => {
+            console.log(error);
+          });
+        
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+      form.reset();
+  };
 
   return (
     <div className="bg-gray-100 flex flex-col h-screen justify-center items-center">

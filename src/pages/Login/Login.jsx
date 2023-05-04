@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const {login} = useContext(AuthContext);
+  const [error, setError] = useState('');
+
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    setError('');
+    
+    login(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      form.reset();
+    })
+    .catch(error =>{
+      setError(error.message);
+    })
+  }
+
   return (
     <div className="bg-gray-100 flex flex-col h-screen justify-center items-center">
       <div className="bg-white rounded-lg p-8 shadow-md">
         <h2 className="text-3xl font-bold mb-4">Login Your account</h2>
-        <form className="space-y-4">
+        <p className="text-error font-semibold">{error}</p>
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label
               className="block text-gray-700 font-bold mb-2"
