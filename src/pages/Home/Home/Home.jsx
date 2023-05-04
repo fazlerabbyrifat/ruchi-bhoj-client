@@ -10,6 +10,7 @@ import gallery3 from "../../../assets/decoration3.jpg";
 import gallery4 from "../../../assets/decoration4.jpg";
 import gallery5 from "../../../assets/decoration5.jpg";
 import gallery6 from "../../../assets/decoration6.jpg";
+import BookTable from "../BookTable/BookTable";
 
 const Home = () => {
   const chefsInfo = useLoaderData();
@@ -39,7 +40,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <div className="my-5">
-        <h1 className="text-5xl font-extrabold text-center text-teal-400">
+        <h1 className="text-5xl font-extrabold pb-5 text-center text-teal-400">
           Our Food Categories
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
@@ -49,7 +50,7 @@ const Home = () => {
         </div>
       </div>
       <div className="my-5">
-        <h1 className="text-5xl font-extrabold text-center text-teal-400">
+        <h1 className="text-5xl font-extrabold pb-5 text-center text-teal-400">
           Our Best Chefs
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
@@ -59,10 +60,10 @@ const Home = () => {
         </div>
       </div>
       <div className="my-5">
-        <h1 className="text-5xl font-extrabold text-center text-teal-400">
+        <h1 className="text-5xl font-extrabold pb-3 text-center text-teal-400">
           Our Gallery
         </h1>
-        <p className="text-center text-xl font-bold mt-3">
+        <p className="text-center text-xl font-bold ">
           With our great selection of dishes from all over the world you can
           feel yourself as a traveler and true gourmet!
         </p>
@@ -74,6 +75,11 @@ const Home = () => {
           <img className="h-96 w-full" src={gallery5} alt="" />
           <img className="h-96 w-full" src={gallery6} alt="" />
         </div>
+      </div>
+      <div className="my-5">
+            <h1 className="text-5xl font-extrabold text-center pb-3 text-teal-400">Wanna Book a Table?</h1>
+            <p className="text-center text-xl font-bold">With our great selection of dishes from all over Bangladesh you can feel yourself as a traveler and true gourmet!</p>
+            <BookTable></BookTable>
       </div>
     </div>
   );
