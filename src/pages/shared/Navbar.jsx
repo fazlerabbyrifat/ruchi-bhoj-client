@@ -3,12 +3,20 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [userName, setUserName] = useState(false);
 console.log(user)
   const handleUserName = () => {
     setUserName(!userName);
   };
+
+  const handleLogout = () =>{
+    logout()
+    .then(result => {})
+    .catch(error => {
+      console.log(error);
+    })
+  }
 
   return (
     <div className="navbar bg-gray-200 md:p-6 font-sans">
@@ -73,7 +81,7 @@ console.log(user)
         )}
         {userName && <span className="text-info ml-2">{user.displayName}</span>}
         {user ? (
-          <button className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
+          <button onClick={handleLogout} className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
             Logout
           </button>
         ) : (

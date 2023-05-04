@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createUser, user, auth } = useContext(AuthContext);
+  const { createUser, user, auth, logout } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   console.log(user);
@@ -37,20 +37,25 @@ const Register = () => {
       .then((result) => {
         updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: image
+          photoURL: image,
         })
-        .then(() =>{
-          console.log("Profile updated");
-        })
-        .catch((error) => {
+          .then(() => {
+            console.log("Profile updated");
+            logout()
+              .then(() => {
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
             console.log(error);
           });
-        
       })
       .catch((error) => {
         setError(error.message);
       });
-      form.reset();
+    form.reset();
   };
 
   return (

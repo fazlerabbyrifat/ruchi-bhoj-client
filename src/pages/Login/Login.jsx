@@ -1,29 +1,34 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const {login} = useContext(AuthContext);
-  const [error, setError] = useState('');
+  const { login } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleLogin = event => {
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    setError('');
-    
+    setError("");
+
     login(email, password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      form.reset();
-    })
-    .catch(error =>{
-      setError(error.message);
-    })
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
   return (
     <div className="bg-gray-100 flex flex-col h-screen justify-center items-center">
@@ -70,9 +75,7 @@ const Login = () => {
             >
               Login
             </button>
-            <Link
-              className="inline-block font-bold text-sm text-blue-500 hover:text-blue-800"
-            >
+            <Link className="inline-block font-bold text-sm text-blue-500 hover:text-blue-800">
               Forgot Password?
             </Link>
           </div>
