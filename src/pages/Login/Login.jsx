@@ -1,12 +1,27 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin, auth } = useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const from = location.state?.from?.pathname || "/";
 
@@ -21,7 +36,6 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -78,6 +92,30 @@ const Login = () => {
             <Link className="inline-block font-bold text-sm text-blue-500 hover:text-blue-800">
               Forgot Password?
             </Link>
+          </div>
+          <div>
+            <span className="mr-2">or log in with:</span>
+            <div className="mt-4 flex items-center justify-center gap-5">
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+              >
+                <span className="flex items-center">
+                  <FaGoogle className="text-blue-600 mr-2" />
+                  Google
+                </span>
+              </button>
+              <button
+                type="button"
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+              >
+                <span className="flex items-center">
+                  <FaGithub className="text-gray-800 mr-2" />
+                  GitHub
+                </span>
+              </button>
+            </div>
           </div>
           <div className="text-center">
             New to this site?{" "}

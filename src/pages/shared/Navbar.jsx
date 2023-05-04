@@ -79,7 +79,7 @@ console.log(user)
             alt=""
           />
         )}
-        {userName && <span className="text-info ml-2">{user.displayName}</span>}
+        {userName && <span className="text-info ml-2">{user?.displayName}</span>}
         {user ? (
           <button onClick={handleLogout} className=" md:mx-4 px-3 py-2 bg-cyan-500 hover:bg-cyan-700 text-white font-medium rounded">
             Logout
