@@ -1,6 +1,7 @@
 import React from "react";
 import { SingleDatePicker } from "react-google-flight-datepicker";
 import "react-google-flight-datepicker/dist/main.css";
+import { Link } from "react-router-dom";
 
 const BookTable = () => {
   return (
@@ -48,12 +49,14 @@ const BookTable = () => {
           ></textarea>
         </div>
         <div className="text-center">
-          <button
-            type="submit"
-            className="px-4 py-2 font-bold text-white bg-teal-400 rounded hover:bg-teal-600 focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
+          <Link>
+            <button
+              type="submit"
+              className="px-4 py-2 font-bold text-white bg-teal-400 rounded hover:bg-teal-600 focus:outline-none focus:shadow-outline"
+            >
+              Submit
+            </button>
+          </Link>
         </div>
       </form>
     </div>
