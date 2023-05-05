@@ -15,16 +15,15 @@ const Footer = () => {
               locally-sourced ingredients and are cooked to order.
             </p>
             <ul className="list-disc list-inside">
-              <li>123 Main Street</li>
-              <li>City, State ZIP</li>
-              <li>Phone: (123) 456-7890</li>
+              <li>Nikunja-2, Khilkhet-1229</li>
+              <li>Dhaka, Bangladesh</li>
+              <li>Phone: +8801700-000000</li>
             </ul>
           </div>
           <div>
             <h2 className="text-lg font-bold mb-4">Hours</h2>
             <ul className="list-disc list-inside">
-              <li>Monday - Friday: 11am - 10pm</li>
-              <li>Saturday: 12pm - 11pm</li>
+              <li>Monday - Saturday: 11am - 10pm</li>
               <li>Sunday: Closed</li>
             </ul>
           </div>
@@ -32,13 +31,13 @@ const Footer = () => {
             <h2 className="text-lg font-bold mb-4">Links</h2>
             <ul className="list-disc list-inside">
               <li>
-                <Link>Home</Link>
+                <Link to='/'>Home</Link>
               </li>
               <li>
                 <Link>Reservation</Link>
               </li>
               <li>
-                <Link>About</Link>
+                <Link to='/about'>About</Link>
               </li>
             </ul>
           </div>
